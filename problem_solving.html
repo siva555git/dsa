@@ -1,0 +1,33 @@
+<script>
+// problem:  Sort this array:
+let myarr1 = [1, 'ss', 11, 2, 'aa'];
+//           expected output:
+//           [ 1, 2, 11, 'aa', 'ss' ]
+// extra test cases if you need them:
+//let myarr2 = ['zzz', 1, 's', 11, 2, 'a', 111];
+// solution:
+function compareNumbers(a, b) {
+  //console.log('a: ' + a);
+  //console.log('b: ' + b);
+  //console.log('-------');
+  if (typeof a === 'number' && typeof b === 'number') {
+    return a - b;
+  }
+  // check for num vs string
+  if (typeof a === 'number' && typeof b === 'string') {
+    return -1;
+  }
+  // check for string vs num
+  if (typeof a === 'string' && typeof b === 'number') {
+    return 1;
+  }
+  // check for string vs string
+  if (typeof a === 'string' && typeof b === 'string') {
+    if (a < b) return -1;
+    else return 1;
+  }
+  return 0;
+}
+myarr1.sort(compareNumbers);
+console.log(myarr1);
+</script>

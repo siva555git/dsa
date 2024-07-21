@@ -1,0 +1,38 @@
+<script>
+var combinationSum = function(candidates, target) {
+    let index = 0
+    let tempDataStruct = []
+    let result = []
+
+    function backtracking(index, target, tempDataStruct) {
+        if(target === 0) {
+            console.log("inside if",...tempDataStruct);
+            result.push([...tempDataStruct])
+            return
+        }
+    
+        if(target < 0) return;
+    
+        for(let i=index; i<candidates.length; i++) {
+        
+            console.log("i =", i);
+            // console.log("index =", index);
+            // console.log("target =", target);
+            // console.log("candidates[i] =", candidates[i]);
+            // console.log("candidates =", candidates);
+            tempDataStruct.push(candidates[i])
+        //   console.log("before tempDataStruct = ",...tempDataStruct);
+        //   console.log("Updated target = ", target-candidates[i]);
+            backtracking(i, target-candidates[i], tempDataStruct)
+            // console.log("after tempDataStruct = ",...tempDataStruct);
+            tempDataStruct.pop();
+            // console.log("after pop",...tempDataStruct);
+            console.log("======================================");
+        }
+    }
+    backtracking(index, target, tempDataStruct)
+    return result;
+};
+
+console.log(combinationSum([2,3,6,7], 7));
+</script>
